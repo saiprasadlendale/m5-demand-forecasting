@@ -1,20 +1,31 @@
-# 📊 Demand Forecasting – Walmart Sales (M5-Style)
+# 🏬 Demand Forecasting – Walmart Sales (M5-Style)
 
-End-to-end **time series demand forecasting** project using Walmart sales data, inspired by the **M5 Forecasting competition**.  
-The goal is to build, evaluate, and compare multiple forecasting models while following **production-ready project structure**.
+An end-to-end **time series demand forecasting** project using Walmart weekly sales data.
+This project is inspired by the **M5 Forecasting competition** and focuses on building
+**interpretable, production-style forecasting pipelines** rather than leaderboard optimization.
 
 ---
 
 ## 📌 Project Overview
 
-Demand forecasting is a core data science skill used across **retail, supply chain, finance, and operations**.  
-In this project, we forecast **weekly sales** using historical Walmart data and compare classical and modern time-series models.
+Demand forecasting is a critical data science problem in **retail, supply chain, finance, and operations**.
+In this project, historical Walmart sales data is used to forecast **weekly demand** and compare
+classical and modern time-series models.
 
-### Key Objectives
-- Understand sales trends, seasonality, and anomalies  
-- Build multiple forecasting models  
-- Compare model performance using business-relevant metrics  
-- Present results in a clean, reproducible GitHub structure  
+The emphasis is on:
+- Clean project structure
+- Reproducibility
+- Business-oriented evaluation
+- Clear comparison of models
+
+---
+
+## 🎯 Objectives
+
+- Analyze trends, seasonality, and anomalies in sales data
+- Build multiple forecasting models
+- Compare model performance using meaningful metrics
+- Present results in a professional, GitHub-ready format
 
 ---
 
@@ -36,15 +47,16 @@ m5-demand-forecasting/
 │   └── 05_model_comparison.ipynb
 │
 ├── src/
+│   ├── __init__.py
 │   ├── preprocessing.py
 │   ├── evaluation.py
 │   └── visualization.py
 │
 ├── results/
-│   ├── plots/
-│   │   ├── sarima_forecast_vs_actual.png
-│   │   └── prophet_forecast.png
-│   └── metrics.csv
+│   ├── metrics.csv
+│   └── plots/
+│       ├── sarima_forecast.png
+│       └── prophet_forecast.png
 │
 ├── requirements.txt
 └── README.md
@@ -53,54 +65,57 @@ m5-demand-forecasting/
 
 ## 📂 Dataset Description
 
-**Source:** Walmart Sales Dataset (45 stores)
+Source: Walmart Sales Dataset (45 stores)
 
-### Raw Data (`data/raw/`)
-Key columns:
-- Date – Weekly start date  
-- Weekly_Sales – Sales per store per week  
-- Holiday_Flag – Indicates holiday weeks  
+Raw Data (data/raw/):
+- Date – Weekly start date
+- Weekly_Sales – Weekly sales per store
+- Holiday_Flag – Indicates holiday weeks
 - Store, Temperature, Fuel_Price, CPI, Unemployment
 
-### Processed Data (`data/processed/`)
-- Aggregated to **company-level weekly sales**
+Processed Data (data/processed/):
+- Aggregated to company-level weekly sales
 - Cleaned and standardized date format
-- Ready for time-series modeling
+- Sorted time index for modeling
+- Saved for reproducibility
 
 ---
 
 ## 🔍 Exploratory Data Analysis
 
-Key observations:
-- Clear **weekly and yearly seasonality**
-- Strong **holiday-driven spikes**
-- Sales volatility increases during peak seasons
-- Presence of anomalies that impact forecasting accuracy
+Key insights from EDA:
+- Strong weekly and yearly seasonality
+- Significant holiday-driven demand spikes
+- Higher volatility during peak seasons
+- Presence of anomalies affecting forecast accuracy
 
 ---
 
 ## 🤖 Models Implemented
 
-### 1️⃣ SARIMA (Seasonal ARIMA)
-- Classical statistical forecasting model
-- Explicitly models trend, seasonality, and autocorrelation
-- Strong baseline for structured time-series data
+SARIMA (Seasonal ARIMA):
+- Classical statistical time-series model
+- Explicit modeling of trend and seasonality
+- Used as a stable baseline forecast
 
-### 2️⃣ Prophet (Meta)
+Prophet (Meta):
 - Modern forecasting framework
-- Handles multiple seasonalities and changepoints automatically
-- More robust to missing data and trend shifts
+- Automatic seasonality and changepoint detection
+- More robust to demand spikes and trend shifts
 
 ---
 
 ## 📈 Model Evaluation
 
-Metrics used:
-- MAE – Mean Absolute Error  
-- RMSE – Root Mean Squared Error  
-- MAPE – Mean Absolute Percentage Error  
+Evaluation metrics:
+- MAE – Mean Absolute Error
+- RMSE – Root Mean Squared Error
+- MAPE – Mean Absolute Percentage Error
 
-Results stored in `results/metrics.csv`
+Metrics are stored in:
+results/metrics.csv
+
+Results Summary (12-week holdout):
 
 | Model   | MAE   | RMSE  | MAPE |
 |--------|-------|-------|------|
@@ -111,66 +126,72 @@ Results stored in `results/metrics.csv`
 
 ## 📊 Visual Results
 
-- SARIMA Forecast vs Actual – Captures trend and seasonality with minor lag during holiday spikes  
-- Prophet Forecast – Better handling of changepoints with uncertainty intervals  
+- SARIMA Forecast vs Actual:
+  Captures overall trend and seasonality, smoothing sharp holiday spikes.
 
-(Plots available in `results/plots/`)
+- Prophet Forecast:
+  Adapts to trend changes and seasonal surges, with uncertainty intervals.
+
+Plots are available in:
+results/plots/
 
 ---
 
 ## 💼 Business Impact
 
-Accurate demand forecasting enables:
-- Improved inventory planning
-- Reduced stockouts and overstock
-- Better staffing and logistics decisions
-- Early detection of abnormal demand patterns
+Accurate demand forecasting helps:
+- Reduce stock-outs and over-inventory
+- Improve inventory planning
+- Optimize staffing and logistics
+- Detect abnormal demand patterns early
 
 ---
 
-## 🛠️ How to Run This Project
+## 🛠️ How to Run the Project
 
-### Google Colab (Recommended)
+Google Colab (Recommended):
 1. Upload the repository to Colab
-2. Place raw data in `data/raw/`
-3. Run notebooks in order (01 → 05)
+2. Place raw data in data/raw/
+3. Run notebooks in order: 01 → 05
 
-### Local Setup
-pip install -r requirements.txt  
+Local Setup:
+pip install -r requirements.txt
 Open notebooks using Jupyter or VS Code.
 
 ---
 
 ## 🚀 Production Considerations
 
-If deployed in production:
+In a real production system:
 - Retrain models weekly or monthly
-- Monitor forecast error with alert thresholds
+- Monitor forecast errors and trigger alerts
 - Add external regressors (holidays, promotions)
-- Extend to hierarchical forecasting (store → region → company)
+- Extend to store-level hierarchical forecasting
 
 ---
 
 ## 📌 Key Takeaways
 
-- Built a full end-to-end forecasting pipeline
-- Compared classical and modern forecasting approaches
+- Built a complete end-to-end demand forecasting pipeline
+- Compared classical and modern time-series models
 - Focused on interpretability and business relevance
 - Followed clean, professional GitHub project structure
 
 ---
 
 ## 🔮 Future Improvements
-- Store-level and hierarchical forecasting
+
+- Hierarchical forecasting (store → region → company)
+- Feature-based ML models (XGBoost / LightGBM)
 - Deep learning models (LSTM / TFT)
 - Rolling cross-validation
-- Automated monitoring dashboards
+- Forecast monitoring dashboards
 
 ---
 
 ## 👤 Author
 
-**Saiprasad Lendale**  
-Aspiring Data Scientist | Time Series & Forecasting  
+Sai Prasad Lendale  
+Aspiring Data Scientist | Time Series & Demand Forecasting
 
-⭐ If you find this project useful, feel free to star the repository!
+If you find this project useful, feel free to star the repository.
