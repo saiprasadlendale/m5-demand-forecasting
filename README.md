@@ -191,7 +191,7 @@ In a real production system:
 
 ## 👤 Author
 
-Sai Prasad Lendale  
+Saiprasad Lendale  
 Aspiring Data Scientist | Time Series & Demand Forecasting
 
 If you find this project useful, feel free to star the repository.
